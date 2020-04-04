@@ -1,0 +1,33 @@
+{{#each products}}
+<div class="w3-container " >
+{{#each this}}
+  <div class="w3-card-4" id="b" style="width:40%">
+    <img src="{{this.imagePath}}"  style="width:100%">
+    <br>
+    <div class="w3-container w3-center">
+      <h1>{{this.title}}</h1>
+      <p>{{this.description}}</p>
+    </div>
+      
+    {{#each foodMenu}}
+    <div class="row">
+     {{#each this}}
+         <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img class="img-responsive" src="{{ this.imagePath }}" alt="...">
+          <div class="caption">
+            <h5>{{ this.item }}</h5>
+            <div class="clearfix">
+              <div class="price pull-left">Rs {{ this.price }}</div>
+              <a href="/user/add-to-cart/{{ this._id }}" class="btn btn-success pull-right" role="button">Add to shopping cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+     {{/each}}
+  </div>
+      {{/each}}
+      </div>
+{{/each}}
+</div>
+{{/each}}

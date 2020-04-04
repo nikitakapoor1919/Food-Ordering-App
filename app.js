@@ -40,7 +40,11 @@ app.use(function(req,res,next){
 
 app.use('/user',UserRoutes)
 app.use('/', routes);
-
+app.use(function(req,res,next){
+    res.locals.login=req.isAuthenticated()
+   
+    next()
+  })
 
 app.listen(2222,()=>{
     console.log('Server Running on http://localhost:2222')

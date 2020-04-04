@@ -6,10 +6,13 @@ var schema = new Schema({
     title: {type: String, required: true},
     description: {type: String, required: true},
     category: {type:String, required: false, default: 'BestSeller'},
+    address:{type:String},
+    PhoneNumber:{type:Number},
+    email:{type:String},
     foodMenu:[{
         item: String,
-        price: {type: Number, required: true},
-        imagePath: {type: String, required: true}
+        price: {type: Number},
+        imagePath: {type: String}
     }]
 });
 

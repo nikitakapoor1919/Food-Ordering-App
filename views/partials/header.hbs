@@ -15,14 +15,14 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 {{#if login}}
-                <li><a class="fa fa-user" style="color: white;" href="/user/profile">&nbsp; User Account</a></li>
-                
-                    <li><a class="glyphicon glyphicon-log-out"style="color: white;" href="/user/logout">&nbsp; Logout</a></li>
-                {{else}}
-                    <li><a href="/shopping-cart/"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                <li><a class="fa fa-user" style="color: white;" href="/user/profile"> User Account</a></li>
+                 <li><a style="color: white;" href="/shopping-cart/"><i class="fa fa-shopping-cart" aria-hidden="true" ></i> Shopping Cart
                     <span class="badge">{{session.cart.totalQty}}</span>
-                    <li><a class="glyphicon glyphicon-user" style="color: white;" href="/user/signup">&nbsp; SignUp</a></li>
-                    <li><a class="glyphicon glyphicon-log-in" style="color: white;"  href="/user/signin">&nbsp; SignIn</a></li>
+                    <li><a class="glyphicon glyphicon-log-out"style="color: white;" href="/user/logout"> Logout</a></li>
+                {{else}}
+                
+                    <li><a class="glyphicon glyphicon-user" style="color: white;" href="/user/signup"> SignUp</a></li>
+                    <li><a class="glyphicon glyphicon-log-in" style="color: white;"  href="/user/signin"> SignIn</a></li>
                 {{/if}}
         
                 

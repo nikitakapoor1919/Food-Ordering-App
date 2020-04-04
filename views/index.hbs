@@ -1,11 +1,32 @@
-
-
-<div class="w3-container">
-  <div class="w3-card-4" style="width:50%">
-    <img src="img_snowtops.jpg" alt="Alps" style="width:100%">
-    <div class="w3-container w3-center">
-      <p></p>
+<div class="w3-card-4" id="b" style="width:100%">
+    <div class="w3-container ">
+     <span>Delievery</span>
+     &nbsp;
+     &nbsp;
+     &nbsp;
+     <span>BestSellers</span>
     </div>
   </div>
-</div>
+  <br>
+  <br>
+{{# each products }}
+  <div class="row">
+    
+    {{# each this}}
+      <div class="col-sm-6 col-md-4" id="a">
+        <div class="thumbnail">
+          <img class="img-responsive" src="{{ this.imagePath }}" alt="..." id="image">
+          <div class="w3-container w3-center">
+            <h3>{{ this.title }}</h3>
+            <p class="description">{{ this.description }}</p>
 
+            <div class="clearfix">
+              <a href="/user/menu/{{this._id}}" class="btn btn-success pull-right" role="button">View Menu</a>
+            </div>
+          </div>
+        </div>
+        </div>
+    {{/each}}
+ 
+  </div>
+{{/each}}

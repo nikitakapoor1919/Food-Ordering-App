@@ -1,0 +1,26 @@
+{
+  "name": "food-order",
+  "version": "1.0.0",
+  "description": "Simple Food Ordering Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "author": "Nikita Kapoor",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "csurf": "^1.11.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.1",
+    "express-session": "^1.17.0",
+    "express-validator": "^5.3.1",
+    "hbs": "^4.1.0",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2"
+  }
+}

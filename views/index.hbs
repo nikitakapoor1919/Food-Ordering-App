@@ -9,7 +9,7 @@
   </div>
   <br>
   <br>
-{{# each products }}
+{{# each Restaurants }}
   <div class="row">
     
     {{# each this}}
@@ -21,7 +21,7 @@
             <p class="description">{{ this.description }}</p>
 
             <div class="clearfix">
-              <a href="/user/menu/{{this._id}}" class="btn btn-success pull-right" role="button">View Menu</a>
+              <a href="/user/restaurant/{{this._id}}" class="btn btn-success pull-right" role="button">View Menu</a>
             </div>
           </div>
         </div>

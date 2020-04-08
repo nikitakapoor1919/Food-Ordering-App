@@ -2,28 +2,47 @@ var express = require('express');
 var router = express.Router();
 var csrf = require('csurf');
 var passport = require('passport');
-var Product = require('../models/product');
+var Restaurant = require('../models/Restaurant');
+var Menu = require('../models/foodMenu');
 
 var csrfProtectionToken = csrf();
 router.use(csrfProtectionToken);
 
-router.get('/menu/:id',isLoggedIn,function(req,res){
+router.get('/restaurant/:id',isLoggedIn,function(req,res){
   username=req.user.email
-  Product.find({_id:req.params.id})
-  .exec(function(err,product){
+  Restaurant.find({_id:req.params.id})
+  .exec(function(err,Restaurant){
     if(err) console.log("Error")
     else {
-      var ProductChunk = []; var chunkSize = 3;
-        for(var i=0; i < product.length; i += chunkSize){
-          ProductChunk.push(product.slice(i, i + chunkSize));
+      var RestaurantChunk = []; var chunkSize = 3;
+        for(var i=0; i < Restaurant.length; i += chunkSize){
+          RestaurantChunk.push(Restaurant.slice(i, i + chunkSize));
         }
-        console.log(ProductChunk);
-        res.render('user/menu',{username:username,products:ProductChunk});
+        console.log(RestaurantChunk);
+       
+        res.render('user/restaurant',{username:username,Restaurants:RestaurantChunk});
     } 
   })
 
 })
-/* GET and Product : user signup page. */
+router.get('/restaurant/menu/:id',isLoggedIn,function(req,res){
+  username=req.user.email
+  Menu.find({rid:req.params.id})
+  .exec(function(err,menu){
+    if(err) console.log("Error")
+    else {
+      var MenuChunk = []; var chunkSize = 3;
+        for(var i=0; i < menu.length; i += chunkSize){
+          MenuChunk.push(menu.slice(i, i + chunkSize));
+        }
+        console.log(MenuChunk);
+       
+        res.render('user/menu',{username:username,items:MenuChunk});
+    } 
+  })
+
+})
+/* GET and Post : user signup page. */
 router.get('/signup', function(req, res, next){
     var messages = req.flash('error');
     res.render('user/signup', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
@@ -35,7 +54,7 @@ router.get('/signup', function(req, res, next){
     failureFlash: true
   }))
   
-  /* GET and Product : user signin page. */
+  /* GET and Post : user signin page. */
   router.get('/signin', function(req, res, next){
     var messages = req.flash('error');
     res.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });

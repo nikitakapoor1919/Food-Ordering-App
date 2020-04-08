@@ -1,0 +1,37 @@
+{{#each Restaurants}}
+<div class="w3-container " >
+{{#each this}}
+  <div class="w3-card-4" id="b" style="width:100%">
+    <br>
+   <a href="/user/restaurant/menu/{{this._id}}" class="btn btn-info pull-right" role="button">View Menu</a>
+    <br>
+    <div class="w3-container w3-center">
+      <img src="{{this.imagePath}}" id="imag" style="width:100%">
+      <h1>{{this.title}}</h1>
+      <p>{{this.description}}</p>
+      {{this.address}}
+    </div>
+    <div class="w3-container">
+        <h3>Contact Us</h3>
+        {{this.email}}
+        <br>
+        +{{this.PhoneNumber}}
+      </div>
+      <div class="w3-container">
+        <h3>Average Cost</h3>
+        {{this.averageCost}}
+      </div>
+      <div class="w3-container">
+        <h3>Top Dishes</h3>
+       {{this.topDishes}}
+      </div>
+      <br>
+       
+       
+      </div>
+{{/each}}
+<br>
+<br>
+</div>
+
+{{/each}}

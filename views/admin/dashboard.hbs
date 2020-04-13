@@ -1,0 +1,20 @@
+<h2 style="text-align: center;">DASHBOARD</h2>
+<table class="table">
+  <thead>
+      <th scope="col">Restaurant Name</th>
+       <th scope="col"></th>
+  </thead>
+  {{# each Restaurants }}
+  {{# each this}}
+  <tbody>
+    <tr>
+      <td>{{this.title}}</td>
+      <td><a href="/admin/modify/{{ this._id }}" class="btn btn-success" role="button">Modify</a>
+       <a href="/admin/delete/{{ this._id }}" class="btn btn-danger" role="button">Delete</a>
+       <a href="/admin/menu/{{ this._id }}" class="btn btn-primary" role="button">FoodMenu</a></td>
+    </tr>
+  </tbody>
+  {{/each}}
+  {{/each}}
+  
+</table>

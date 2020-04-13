@@ -1,0 +1,64 @@
+    <h1 align="center">Edit Restaurant</h1>
+   <div class="w3-container content">
+  {{# each Restaurant}}
+  {{# each this}}
+        <form  action="/admin/modify/{{this._id}}" method="post">
+         <div class="form-group">
+                <label for="title" >Title</label>
+                <br>
+                <input type="text" value="{{this.title}}" placeholder="Enter Title" name="title" class="form-control" required>
+            </div>
+              <div class="form-group">
+                <label for="category" >Category</label>
+                <br>
+                <input type="text" value="{{this.category}}" placeholder="BestSellers" name="category" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email" >Email</label>
+                <br>
+                <input type="text" value="{{this.email}}" placeholder="Enter Email" name="email" class="form-control" required>
+            </div>
+             <div class="form-group">
+                <label for="Number" >Phone Number</label>
+                <br>
+                <input type="number" value="{{this.PhoneNumber}}" placeholder="Enter PhoneNumber" name="PhoneNumber" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="Description" >Description</label>
+                <br>
+               <input type="text" value="{{this.description}}" placeholder="Enter Description"  name="description"  class="form-control" required>
+               <br>
+            </div>
+            <div class="form-group">
+                <label for="Address" >Address</label>
+                <br>
+              <textarea name="address" rows="4" cols="50" class="form-control" required>{{this.address}}
+              </textarea>
+               <br>
+            </div>
+             <div class="form-group">
+                <label for="topDishes" >Top Dishes</label>
+                <br>
+                <input type="text" value="{{this.topDishes}}" placeholder="NorthIndian-Chinese" name="topDishes" class="form-control">
+            </div>
+             <div class="form-group">
+                <label for="AverageCost" >AverageCost</label>
+                <br>
+                <input type="text" value="{{this.averageCost}}" placeholder="2000" name="averageCost" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="image" >Add ImagePath</label>
+                <br>
+                <input type="text"value="{{this.imagePath}}" id="photo" placeholder="Enter URL" name="imagePath" class="form-control">
+            </div>
+           
+    
+            <input type="hidden" name="_csrf"  value="{{csrfToken}}">
+            <button id="btnAddPost"  type="submit" class="btn btn-primary">Edit</button>
+            <br>
+        </form>  
+        {{/each}}
+         {{/each}}
+        <br>
+        <br>
+    </div>

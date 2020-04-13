@@ -1,0 +1,59 @@
+    <h1 align="center">Add Restaurant</h1>
+   <div class="w3-container content">
+        <form  action="/admin/add-restaurant" method="post">
+         <div class="form-group">
+                <label for="title" >Title</label>
+                <br>
+                <input type="text"  placeholder="Enter Title" name="title" class="form-control" required>
+            </div>
+             <div class="form-group">
+                <label for="category" >Category</label>
+                <br>
+                <input type="text" placeholder="BestSellers" name="category" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="email" >Email</label>
+                <br>
+                <input type="text"  placeholder="Enter Email" name="email" class="form-control" required>
+            </div>
+             <div class="form-group">
+                <label for="Number" >Phone Number</label>
+                <br>
+                <input type="number"  placeholder="Enter PhoneNumber" name="PhoneNumber" class="form-control" required>
+            </div>
+             <div class="form-group">
+                <label for="description" >Description</label>
+                <br>
+                <input type="text"  placeholder="NorthIndian-Chinese" name="description" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="Address" >Address</label>
+                <br>
+              <textarea name="address"  class="form-control" required>
+              </textarea>
+               <br>
+            </div>
+             <div class="form-group">
+                <label for="topDishes" >Top Dishes</label>
+                <br>
+                <input type="text"  placeholder="Kulfi,Biryani" name="topDishes" class="form-control">
+            </div>
+             <div class="form-group">
+                <label for="AverageCost" >AverageCost</label>
+                <br>
+                <input type="text"  placeholder="Rs2000" name="averageCost" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="image" >Add ImagePath</label>
+                <br>
+                <input type="text" id="photo" placeholder="Enter URL" name="imagePath" class="form-control">
+            </div>
+           
+    
+           
+            <button id="btnAddPost"  type="submit" class="btn btn-primary">ADD</button>
+            <br>
+        </form>  
+        <br>
+        <br>
+    </div>

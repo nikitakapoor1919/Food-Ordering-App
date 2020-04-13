@@ -42,6 +42,14 @@ router.get('/restaurant/menu/:id',isLoggedIn,function(req,res){
   })
 
 })
+//Add to Cart
+router.get('/shopping-cart',isLoggedIn, function(req, res, next){
+  if(!req.session.cart){
+    return res.render('shopping-cart', {products: null});
+  }
+  var cart = new Cart(req.session.cart);
+  res.render('shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+});
 /* GET and Post : user signup page. */
 router.get('/signup', function(req, res, next){
     var messages = req.flash('error');

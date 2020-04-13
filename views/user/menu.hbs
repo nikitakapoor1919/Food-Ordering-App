@@ -1,19 +1,21 @@
-<h1 align="center">Food Menu</h1>
+   <ul class="nav navbar-nav navbar-right" style="padding-right:10px;" >
+   <a href="/shopping-cart/" class="btn btn-primary" style="position:fixed"><i class="fa fa-shopping-cart" aria-hidden="true" ></i> View Bill
+                    <span class="badge">{{session.cart.totalQty}}</span></a>                 
+   </ul>
 {{# each items }}
   <div class="row">
+    <br>
+       <div class="w3-card-4" id="b" style="width:70%">
+       <div class="w3-container w3-center"><h1>Food Menu</h1> </div>  
     {{# each this}}
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img class="img-responsive" src="{{ this.imagePath }}" >
-          <div class="caption">
-            <h3>{{ this.item }}</h3>
-            <div class="clearfix">
-              <div class="price pull-left">Rs {{ this.price }}</div>
-              <a href="/add-to-cart/{{ this._id }}" class="btn btn-success pull-right" role="button">Add to Cart</a>
-            </div>
-          </div>
+        <div class="w3-container">
+            <h3>{{ this.name }}</h3>
+            Rs {{ this.price }}
+            <a href="/add-to-cart/{{ this._id }}" class="btn btn-success pull-right" role="button">Add to Cart</a>
         </div>
-      </div>
+              <br>
     {{/each}}
+    <br>
+    </div>
   </div>
 {{/each}}

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Restaurant = require('../models/Restaurant');
 var Menu=require('../models/foodMenu')
+var Cart=require('../models/cart')
 
 router.get('/', function(req, res) {
     Restaurant.find(function(err, docs){
@@ -14,6 +15,27 @@ router.get('/', function(req, res) {
     });
 });
 
+router.get('/add-to-cart/:id',function(req,res){
+  var MenuId=req.params.id
+  var cart=new Cart(req.session.cart? req.session.cart:{})
+
+  Menu.findById(MenuId,function(err,Menu){
+    if(err)
+    return res.redirect('back')
+    cart.add(Menu,Menu.id)
+    req.session.cart=cart
+    console.log(req.session.cart)
+    res.redirect('back')
+  })
+})
+router.get('/shopping-cart', function(req, res, next){
+  if(!req.session.cart){
+    return res.render('shopping-cart', {products: null});
+  }
+  var cart = new Cart(req.session.cart);
+  res.render('shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+});
+//PostMan
 router.get('/restaurants', async (req, res) => {
   const restaurant = await Restaurant.find({});
 

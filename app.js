@@ -8,9 +8,11 @@ var mongoose=require('mongoose')
 var flash=require('connect-flash')
 var validator=require('express-validator')
 var session=require('express-session')
+var MongoStore=require('connect-mongo')(session)
 
 require('./config/passport')
 
+var AdminRoutes=require('./routes/admin')
 var UserRoutes=require('./routes/user')
 var routes = require('./routes/index');
 var app=express()
@@ -35,10 +37,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req,res,next){
     res.locals.login=req.isAuthenticated()
+    res.locals.session=req.session
     next()
 })
 
 app.use('/user',UserRoutes)
+app.use('/admin',AdminRoutes)
 app.use('/', routes);
 app.use(function(req,res,next){
     res.locals.login=req.isAuthenticated()

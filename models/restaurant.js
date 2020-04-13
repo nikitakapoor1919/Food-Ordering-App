@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var schema = new Schema({
     imagePath: {type: String, required: true},
     title: {type: String, required: true},
-    description: {type: String, required: true},
+    description: {type: String},
     category: {type:String, required: false, default: 'BestSeller'},
     address:{type:String},
     PhoneNumber:{type:Number},

@@ -7,7 +7,7 @@ A Simple Food Ordering application using NodeJS and MongoDb
 2. npm install
 3. Run mongodb
 4. npm run dev
-5. Go To  http://localhost:2929/
+5. Go To  http://localhost:2222/
 
 # Steps To Run MongoDb
 

@@ -1,0 +1,42 @@
+<h1>User Profile</h1>
+<div class="row">
+    <div class="col-md-4  form">
+        <br>
+        {{# if user}}
+        <form  action="/user/profile" method="POST" >
+            <div class="form-group">
+                <label for="email" >E-mail/Username</label>
+                <br>
+                <input type="text" id="email" value="{{user.email}}" name="email" class="form-control" disabled>
+            </div>
+            <div class="form-group">
+                <label for="Name" >Name</label>
+                <br>
+                <input type="text" id="Name" value="{{user.name}}" name="Name" class="form-control" autocomplete="off" required>
+            </div>
+              <div class="form-group">
+                <label for="Age" >Age</label>
+                <br>
+                <input type="text" id="Age" value="{{user.age}}" name="Age" class="form-control" autocomplete="off" >
+            </div>
+             <div class="form-group">
+                <label for="phone" >Phone</label>
+                <br>
+                <input type="text" id="phone" value="{{user.PhoneNumber}}" placeholder="+91 9876543210" name="phone" class="form-control" autocomplete="off" >
+            </div>
+              <div class="form-group">
+                <label for="address" >Address</label>
+                <br>
+                 <input type="text" id="Address" value="{{user.address}}" name="address" class="form-control" autocomplete="off" >
+                     {{!-- <textarea name="address"  rows="4" cols="50" class="form-control"></textarea> --}}
+            
+            </div>
+
+            <br>
+            <input type="hidden"  name="_csrf"  value="{{csrfToken}}">
+            <button type="submit" class="btn btn-success col-3 ">Update</button>
+            
+        </form>
+        {{/if}}
+    </div>
+</div>

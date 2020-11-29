@@ -4,6 +4,8 @@ var csrf = require('csurf');
 var passport = require('passport');
 var Restaurant = require('../models/Restaurant');
 var Menu = require('../models/foodMenu');
+var User = require('../models/user');
+var Cart = require('../models/cart');
 
 var csrfProtectionToken = csrf();
 router.use(csrfProtectionToken);
@@ -73,6 +75,64 @@ router.get('/signup', function(req, res, next){
     failureRedirect: '/user/signin',
     failureFlash: true
   }));
+  // User Profile Page
+  router.get('/profile',isLoggedIn,(req,res)=>{
+    user=req.user
+    console.log('User',user)
+    res.render("user/profile",{user:user, csrfToken: req.csrfToken()})
+  })
+  router.post('/profile', isLoggedIn, (req, res) => {
+    console.log('Editing')
+    id=req.user.id
+    console.log(id)
+    User.findOneAndUpdate(
+      {_id:id},{$set:{name:req.body.Name,age:req.body.Age,PhoneNumber:req.body.phone,address:req.body.address}},{upsert:true},
+      function(err,user){
+        if(err)
+        console.log("Error")
+        else{
+          console.log('done')
+          res.redirect("/user/profile")
+        }
+      }
+    )
+  })
+  //Buy Now page
+router.get('/buy-now',isLoggedIn,function(req,res){
+  if(!req.session.cart){
+    return res.redirect('/shopping-cart')
+  }
+  var cart=new Cart(req.session.cart ? req.session.cart:{})
+  res.render('user/buy-now', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+  
+  cart.removeAll()
+  req.session.cart=cart
+  
+})
+// Cart Buttons
+
+router.get('/reduce/:id',function(req,res){
+  var productId=req.params.id
+  var cart=new Cart(req.session.cart ? req.session.cart:{})
+
+  cart.reduceByOne(productId)
+  req.session.cart=cart
+  res.redirect('/shopping-cart')
+})
+
+router.get('/remove/:id',function(req,res){
+  var productId=req.params.id
+  var cart=new Cart(req.session.cart ? req.session.cart:{})
+
+  cart.removeItem(productId)
+  req.session.cart=cart
+  res.redirect('/shopping-cart')
+})
+   //logout
+  router.get('/logout', isLoggedIn, function(req, res, next){
+    req.logout();
+    res.redirect('/');
+  });
   
   router.get('/logout', isLoggedIn, function(req, res, next){
     req.logout();

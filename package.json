@@ -25,5 +25,8 @@
     "nodemon": "^2.0.2",
     "serve-favicon": "^2.5.0",
     "stripe": "^8.126.0"
+  },
+  "engines": {
+    "node": "8"
   }
 }

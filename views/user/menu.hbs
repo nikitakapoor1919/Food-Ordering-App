@@ -1,21 +1,31 @@
-   <ul class="nav navbar-nav navbar-right" style="padding-right:10px;" >
-   <a href="/shopping-cart/" class="btn btn-primary" style="position:fixed"><i class="fa fa-shopping-cart" aria-hidden="true" ></i> View Bill
-                    <span class="badge">{{session.cart.totalQty}}</span></a>                 
-   </ul>
-{{# each items }}
-  <div class="row">
-    <br>
-       <div class="w3-card-4" id="b" style="width:70%">
-       <div class="w3-container w3-center"><h1>Food Menu</h1> </div>  
-    {{# each this}}
-        <div class="w3-container">
-            <h3>{{ this.name }}</h3>
-            ₹{{ this.price }}
-            <a href="/add-to-cart/{{ this._id }}" class="btn btn-success pull-right" role="button">Add to Cart</a>
-        </div>
-              <br>
-    {{/each}}
-    <br>
-    </div>
+<div class="container">
+  <ul class="nav navbar-nav navbar-right" style="padding-right:10px;" >
+    <a href="/shopping-cart/" class="btn btn-primary" style="position:fixed"><i class="fa fa-shopping-cart" aria-hidden="true" ></i> View Bill
+                  <span class="badge">{{session.cart.totalQty}}</span></a>                 
+  </ul>
+  <div class="w3-card-4" style="padding:20px">
+  <table class="table" >
+    <thead>
+        <th scope="col" style="text-transform:uppercase;font-size: 30px">Food Menu</th>
+        <th scope="col"></th>
+    </thead>
+  {{# each items }}
+  <tr>
+      {{# each this}}
+      <tr>
+            <td>{{ this.name }}</td>
+            <td>₹{{ this.price }}</td>
+            <td>
+              <a href="/admin/menu-delete/{{ this._id }}">
+              <div style="text-align:right">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+              </a>
+              </td>
+      </tr>
+      {{/each}}
+  </tr>   
+  {{/each}}
+  </table>
   </div>
-{{/each}}
+</div> 

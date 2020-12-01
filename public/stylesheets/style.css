@@ -1,6 +1,7 @@
 
 body{
-  font-family:'Times New Roman', Times, serif
+  font-family:'Times New Roman', Times, serif;
+  background-color: rgba(241, 236, 236, 0.979);
 }
 #nav {
   overflow: hidden;
@@ -38,7 +39,8 @@ footer{
 	bottom: 0;
 }
 .footer-distributed{
-	background-color: #292c2f;
+	/* background-color: #292c2f; */
+	background-color: rgb(248, 248, 248);
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
@@ -61,7 +63,7 @@ footer{
 }
  
 .footer-distributed h3{
-	color:  #ffffff;
+	color: rgb(75, 73, 73);
 	font: normal 36px 'Cookie', cursive;
 	margin: 0;
 }
@@ -72,7 +74,7 @@ footer{
  
  
 .footer-distributed .footer-links{
-	color:  #ffffff;
+	color:  rgb(75, 73, 73);
 	margin: 20px 0 12px;
 	padding: 0;
 }
@@ -85,7 +87,7 @@ footer{
 }
  
 .footer-distributed .footer-company-name{
-	color:  #8f9296;
+	color:  #666769;
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
@@ -98,7 +100,7 @@ footer{
  
 .footer-distributed .footer-center i{
 	background-color:  #33383b;
-	color: #ffffff;
+	color: rgb(75, 73, 73);
 	font-size: 25px;
 	width: 38px;
 	height: 38px;
@@ -116,7 +118,7 @@ footer{
  
 .footer-distributed .footer-center p{
 	display: inline-block;
-	color: #ffffff;
+	color: rgb(75, 73, 73);
 	vertical-align: middle;
 	margin:0;
 }
@@ -147,7 +149,7 @@ footer{
  
 .footer-distributed .footer-company-about span{
 	display: block;
-	color:  #ffffff;
+	color:  rgb(75, 73, 73);
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 20px;
@@ -226,4 +228,7 @@ footer{
 
 .total {
     margin-left: auto;
+}
+.imgCaraursel{
+	background-image: url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png");
 }

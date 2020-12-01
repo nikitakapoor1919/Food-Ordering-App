@@ -16,9 +16,25 @@ var AdminRoutes=require('./routes/admin')
 var UserRoutes=require('./routes/user')
 var routes = require('./routes/index');
 var app=express()
-var uri = process.env['URI'];
+// var uri = process.env['MONGODB_URI'];
 
-mongoose.connect(uri,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  });
+// mongoose.connect(uri,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  });
+
+const db = process.env.MONGODB_URI;
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(db, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+    console.log("MongoDB is Connected...");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+connectDB();
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
@@ -57,5 +73,5 @@ if(process.env.NODE_ENV==='production'){
 }
 
 app.listen(port,()=>{
-    console.log(`Server Running on ${port}`)
+    console.log(`Server Running on http://localhost:${port}/`)
 })

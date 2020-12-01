@@ -10,12 +10,13 @@ var validator=require('express-validator')
 var session=require('express-session')
 var MongoStore=require('connect-mongo')(session)
 
-require('./config/passport')
+require('./config/passport.js')
 require('dotenv').config({path:__dirname+'/.env'})
 var AdminRoutes=require('./routes/admin')
 var UserRoutes=require('./routes/user')
 var routes = require('./routes/index');
 var app=express()
+var favicon = require('serve-favicon');
 // var uri = process.env['MONGODB_URI'];
 
 // mongoose.connect(uri,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  });
@@ -50,7 +51,7 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
 
 app.use(function(req,res,next){
     res.locals.login=req.isAuthenticated()

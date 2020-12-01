@@ -11,14 +11,13 @@ var session=require('express-session')
 var MongoStore=require('connect-mongo')(session)
 
 require('./config/passport')
-
+require('dotenv').config({path:__dirname+'/.env'})
 var AdminRoutes=require('./routes/admin')
 var UserRoutes=require('./routes/user')
 var routes = require('./routes/index');
 var app=express()
-var uri = process.env.MONGODB_URI;
-// var uri="mongodb+srv://nikita:1998Nikita@1998@cluster0.4zyob.mongodb.net/FoodOrder?retryWrites=true&w=majority"
-// mongoose.connect('mongodb://localhost:27017/FoodOrder', {useNewUrlParser: true});
+var uri = process.env['URI'];
+
 mongoose.connect(uri,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  });
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');

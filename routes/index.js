@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Restaurant = require('../models/Restaurant');
+var Restaurant = require('../models/restaurant');
 var Menu=require('../models/foodMenu')
 var Cart=require('../models/cart')
 

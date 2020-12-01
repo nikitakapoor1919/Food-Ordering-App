@@ -206,3 +206,24 @@ footer{
 	margin-right: auto;
 	padding: 10px;
 }
+
+.price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.price-cart {
+    margin-right: 20px;
+}
+
+.border {
+    border-color: 2px solid red;
+}
+
+.checkout {
+    margin-top:5px;
+}
+
+.total {
+    margin-left: auto;
+}

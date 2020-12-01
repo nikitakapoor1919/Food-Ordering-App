@@ -6,6 +6,7 @@ var Restaurant = require('../models/Restaurant');
 var Menu = require('../models/foodMenu');
 var User = require('../models/user');
 var Cart = require('../models/cart');
+var Order = require('../models/order');
 
 var csrfProtectionToken = csrf();
 router.use(csrfProtectionToken);
@@ -97,13 +98,57 @@ router.get('/signup', function(req, res, next){
       }
     )
   })
+//Checkout
+router.get('/checkout', isLoggedIn, function (req, res, next) {
+  if(!req.session.cart) {
+      return res.redirect('/shopping-cart');
+  }
+  var cart = new Cart(req.session.cart);
+  var errMsg = req.flash('error')[0];
+  return res.render('user/checkout', {total: cart.totalPrice, errMsg: errMsg, noError: !errMsg,csrfToken: req.csrfToken()});
+});
+
+router.post('/checkout', isLoggedIn, function(req, res, next) {
+  if(!req.session.cart) {
+      return res.redirect('/shopping-cart');
+  }
+  var cart = new Cart(req.session.cart);
+
+  var stripe = require("stripe")(
+      "sk_test_51HtYXcJra8DO8q6G6q082szvPsqjsJxs6EoTxIpGtaARF0XWhZqol3Xlx9CbyfnPkihqtyifqcbkaHn5Viby5LHX00UJksBUEo"
+  );
+ console.log('Source:'+req.body.stripeToken)
+  stripe.charges.create({
+      amount: cart.totalPrice * 100,
+      currency: "inr",
+      source: req.body.stripeToken, // obtained with Stripe.js
+      description: "Test Charge"
+  }, function(err, charge) {
+      if(err) {
+          req.flash('error', err.message);
+          return res.redirect('/user/checkout');
+      }
+      var order = new Order({
+          user: req.user,
+          cart: cart,
+          address: req.body.address,
+          name: req.body.name,
+          paymentId: charge.id
+      });
+      order.save(function(err, result) {
+          req.flash('success', 'Successfully bought product!');
+          req.session.cart = null;
+          res.redirect('/user/buy-now');
+      });
+  });
+});
   //Buy Now page
 router.get('/buy-now',isLoggedIn,function(req,res){
-  if(!req.session.cart){
-    return res.redirect('/shopping-cart')
-  }
+  // if(!req.session.cart){
+  //   return res.redirect('/shopping-cart')
+  // }
   var cart=new Cart(req.session.cart ? req.session.cart:{})
-  res.render('user/buy-now', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+  res.render('user/buy-now');
   
   cart.removeAll()
   req.session.cart=cart

@@ -35,6 +35,7 @@ router.get('/shopping-cart', function(req, res, next){
   var cart = new Cart(req.session.cart);
   res.render('shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
+
 //PostMan
 router.get('/restaurants', async (req, res) => {
   const restaurant = await Restaurant.find({});

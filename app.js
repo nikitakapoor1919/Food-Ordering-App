@@ -16,8 +16,8 @@ var AdminRoutes=require('./routes/admin')
 var UserRoutes=require('./routes/user')
 var routes = require('./routes/index');
 var app=express()
-// var uri = process.env.URI;
-var uri="mongodb+srv://nikita:1998Nikita@1998@cluster0.4zyob.mongodb.net/FoodOrder?retryWrites=true&w=majority"
+var uri = process.env.MONGODB_URI;
+// var uri="mongodb+srv://nikita:1998Nikita@1998@cluster0.4zyob.mongodb.net/FoodOrder?retryWrites=true&w=majority"
 // mongoose.connect('mongodb://localhost:27017/FoodOrder', {useNewUrlParser: true});
 mongoose.connect(uri,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  });
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));

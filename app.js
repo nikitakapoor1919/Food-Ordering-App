@@ -16,6 +16,7 @@ var AdminRoutes=require('./routes/admin')
 var UserRoutes=require('./routes/user')
 var routes = require('./routes/index');
 var app=express()
+// var uri = process.env.URI;
 var uri="mongodb+srv://nikita:1998Nikita@1998@cluster0.4zyob.mongodb.net/FoodOrder?retryWrites=true&w=majority"
 // mongoose.connect('mongodb://localhost:27017/FoodOrder', {useNewUrlParser: true});
 mongoose.connect(uri,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  });
@@ -49,7 +50,12 @@ app.use(function(req,res,next){
    
     next()
   })
+var port=process.env.PORT||2222
 
-app.listen(2222,()=>{
-    console.log('Server Running on http://localhost:2222')
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static('build'))
+}
+
+app.listen(port,()=>{
+    console.log(`Server Running on ${port}`)
 })

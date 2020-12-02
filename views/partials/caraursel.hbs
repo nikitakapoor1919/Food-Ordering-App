@@ -3,7 +3,18 @@
 {{!-- <div >
    <img src="https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png" style="width:100%;height:400px">
 </div> --}}
-<div class="active-cyan-4 mb-4 container ">
-  <input class="form-control" style="height:45px" type="text" placeholder="Search for Restaurant" aria-label="Search">
+    <div class="active-cyan-4 mb-4 container " onKeyPress="return myFunction(event)">
+      <form id="form01" action="" onsubmit="return false;" >
+          <input class="form-control" style="height:45px" name="text" type="text" placeholder="Search for Restaurant" aria-label="Search"  onclick="myFunction(0)">
+      </form>
+    </div>
 </div>
-</div>
+{{!-- <script>
+  function myFunction(e) {
+   if((e && e.keyCode == 13) ) {
+     alert("The form was submitted");
+     document.forms.form01.submit();
+     document.forms.form01.fname.value = ""; // could be form01.reset as well
+   }
+}
+</script> --}}

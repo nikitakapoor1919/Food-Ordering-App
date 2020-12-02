@@ -154,6 +154,8 @@ router.get('/buy-now',isLoggedIn,function(req,res){
   req.session.cart=cart
   
 })
+//Search Bar
+
 // Cart Buttons
 
 router.get('/reduce/:id',function(req,res){

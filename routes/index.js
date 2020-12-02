@@ -14,7 +14,14 @@ router.get('/', function(req, res) {
       res.render('index', { title: 'Food-Ordering App', Restaurants: RestaurantChunk});
     });
 });
-
+//Search Bar
+// router.post('/', function(req, res){
+//   // Restaurant.find(req.params.text,function(err,restaurant){
+//   //   if(err) console.log(err);
+//   // })
+//   console.log('HOoooo')
+//   console.log(req.body.text)
+// });
 router.get('/add-to-cart/:id',function(req,res){
   var MenuId=req.params.id
   var cart=new Cart(req.session.cart? req.session.cart:{})

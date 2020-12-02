@@ -18,17 +18,19 @@
         <br>
         +{{this.PhoneNumber}}
       </div>
+      {{#if this.averageCost}}
       <div class="w3-container">
         <h3>Average Cost</h3>
         {{this.averageCost}}
       </div>
+      {{/if}}
+      {{#if this.topDishes}}
       <div class="w3-container">
         <h3>Top Dishes</h3>
        {{this.topDishes}}
       </div>
+      {{/if}}
       <br>
-       
-       
       </div>
 {{/each}}
 <br>

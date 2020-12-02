@@ -15,6 +15,7 @@
       <tr>
             <td>{{ this.name }}</td>
             <td>₹{{ this.price }}</td>
+            <td> <a href="/add-to-cart/{{ this._id }}" class="btn btn-success pull-right" role="button">Add to Cart</a></td>
       </tr>
       {{/each}}
   </tr>   

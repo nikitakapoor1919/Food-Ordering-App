@@ -1,5 +1,8 @@
-# Food-Ordering-App
-A Simple Food Ordering application using NodeJS and MongoDb
+# Food-Ordering-App using NodeJS, Handlebars and MongoDb
+The Online Ordering System can be defined as a simple and convenient way for customers to purchase food online, without having to go to the restaurant.
+Therefore, as per this system, the customer visits the restaurant’s app or website, browses through the various food items, combos and cuisines available there and goes ahead and selects and purchases the items he or she needs.
+Payments for such online orders Stripe Payment method is used.
+This system for online food delivery is completely safe and secure method that is revolutionizing the way in which the food industry operates.
 
 # Follow These Steps
 
@@ -10,9 +13,5 @@ A Simple Food Ordering application using NodeJS and MongoDb
 5. Go To  http://localhost:2222/
 6. Go To http://localhost:2222/admin add new restaurants.
 
-# Steps To Run MongoDb
-
-1. create folder data on this project
-2. Write mongod --dbpath=./data on terminal(p.s. Don't close this terminal)
 
 <a href="https://food-delievery.herokuapp.com/">LIVE DEMO</a>

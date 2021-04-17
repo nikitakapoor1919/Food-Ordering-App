@@ -1,4 +1,4 @@
-<b><h1 align=center>Food-Ordering-App using NodeJS, Handlebars and MongoDb </h1></b>
+<b><h1 align=center>Food-Ordering-App<span>&#127839;</span></h1></b>
 
 ## <strong>About 🚩 [![GitHub contributors](https://img.shields.io/github/contributors/nikitakapoor1919/Food-Ordering-App.svg)](https://github.com/nikitakapoor1919/Food-Ordering-App/graphs/contributors/)</strong>
 The Online Ordering System can be defined as a simple and convenient way for customers to purchase food online, without having to go to the restaurant. Therefore, as per this system, the customer visits the restaurant’s app or website, browses through the various food items, combos and cuisines available there and goes ahead and selects and purchases the items he or she needs. Payments for such online orders Stripe Payment method is used. This system for online food delivery is completely safe and secure method that is revolutionizing the way in which the food industry operates.

@@ -17,9 +17,6 @@ var UserRoutes=require('./routes/user')
 var routes = require('./routes/index');
 var app=express()
 var favicon = require('serve-favicon');
-// var uri = process.env['MONGODB_URI'];
-
-// mongoose.connect(uri,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  });
 
 const db = process.env.MONGODB_URI;
 
